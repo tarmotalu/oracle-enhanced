@@ -1030,7 +1030,6 @@ module ActiveRecord
       self.cache_columns = false
 
       def columns(table_name, name = nil) #:nodoc:
-        puts "@@cache_columns = #{@@cache_columns}"
         if @@cache_columns
           @@columns_cache ||= {}
           @@columns_cache[table_name] ||= columns_without_cache(table_name, name)
@@ -1103,7 +1102,6 @@ module ActiveRecord
 
       # used in migrations to clear column cache for specified table
       def clear_table_columns_cache(table_name)
-        puts "@@cache_columns = #{@@cache_columns}"
         if @@cache_columns
           @@columns_cache ||= {}
           @@columns_cache[table_name.to_s] = nil
@@ -1121,7 +1119,6 @@ module ActiveRecord
       # Find a table's primary key and sequence. 
       # *Note*: Only primary key is implemented - sequence will be nil.
       def pk_and_sequence_for(table_name, owner=nil, desc_table_name=nil, db_link=nil) #:nodoc:
-        puts "@@cache_columns = #{@@cache_columns}"
         if @@cache_columns
           @@pk_and_sequence_for_cache ||= {}
           if @@pk_and_sequence_for_cache.key?(table_name)
